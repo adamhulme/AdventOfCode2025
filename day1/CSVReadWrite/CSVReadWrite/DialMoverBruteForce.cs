@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace CSVReadWrite;
-public class DialMover
+public class DialMoverBruteForce
 {
     public int DialPos { get; set; }
     public int HitZeroCount { get; set; }
 
-    public DialMover()
+    public DialMoverBruteForce()
     {
         DialPos = 50;
         HitZeroCount = 0;

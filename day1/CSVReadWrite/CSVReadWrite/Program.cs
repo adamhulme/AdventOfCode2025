@@ -7,7 +7,7 @@ class Program
     {
         StreamReader sr = new StreamReader("D:\\projects\\adventofcode2025\\day1\\to-update.csv");
         var line = sr.ReadLine();
-        var dial = new DialMover();
+        var dial = new DialMoverBruteForce();
         var zeroCount = 0;
         while (line != null)
         {
