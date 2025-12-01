@@ -16,7 +16,7 @@ class Program
 
             dial.MoveDial(direction, amountToMove);
             Console.WriteLine($"Current dial pos: {dial.DialPos}");
-            Console.WriteLine($"Finish zero: {dial.HitZeroCount}");
+            Console.WriteLine($"Hit zero: {dial.HitZeroCount}");
             line = sr.ReadLine();
         }
         sr.Close();
