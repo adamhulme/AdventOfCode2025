@@ -18,48 +18,29 @@ public class DialMover
     {
         if (direction == 'L')
         {
-            if (DialPos == 0)
+            for (int i = 0; i < amount; i++)
             {
-                if (amount >= 100)
+                DialPos--;
+                if (DialPos == 0)
                 {
                     HitZeroCount++;
-                    MoveDial(direction, amount - 100);
-                    return;
                 }
-                else
+                if (DialPos < 0)
                 {
-                    DialPos = 100 - amount;
-                    return;
+                    DialPos = 99;
                 }
-            }
-
-            if (DialPos - amount > 0)
-                DialPos -= amount;
-            else if (DialPos - amount == 0)
-            {
-                DialPos = 0;
-                HitZeroCount++;
-            }
-            else
-            {
-                var moved = DialPos;
-                DialPos = 0;
-                HitZeroCount++;
-                MoveDial(direction, amount - moved);
             }
         }
         else
         {
-            if (DialPos + amount < 100)
+            for (int i = 0; i < amount; i++)
             {
-                DialPos += amount;
-            }
-            else
-            {
-                var moved = 100 - DialPos;
-                DialPos = 0;
-                HitZeroCount++;
-                MoveDial(direction, amount - moved);
+                DialPos++;
+                if (DialPos == 100)
+                {
+                    DialPos = 0;
+                    HitZeroCount++;
+                }
             }
         }
     }
