@@ -56,3 +56,6 @@ TestResults/
 # Other
 *.bak
 *.swp
+
+# AoC files
+*.csv
