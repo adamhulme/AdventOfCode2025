@@ -2,14 +2,14 @@
 {
     static void Main(string[] args)
     {
-        // Part1();
+        Part1();
         Part2();
+        Console.ReadLine();
     }
 
     public static void Part1()
     {
-        var filename = "C:\\projects\\aoc25\\day6\\ex.txt";
-        StreamReader sr = new StreamReader(filename);
+        var filename = "C:\\projects\\aoc25\\day6\\in.txt";
         var lines = File.ReadAllLines(filename);
         var numbersPerProblem = lines.Count() - 1;
         var problemCount = lines[0].Split(" ", StringSplitOptions.RemoveEmptyEntries).Count();
@@ -36,13 +36,11 @@
         }
 
         Console.WriteLine($"Part 1: {problemTotals.Sum()}");
-        Console.ReadLine();
     }
 
     public static void Part2()
     {
         var filename = "C:\\projects\\aoc25\\day6\\in.txt";
-        StreamReader sr = new StreamReader(filename);
         var lines = File.ReadAllLines(filename);
         var numbersPerProblem = lines.Count() - 1;
         var problemCount = lines[0].Split(" ", StringSplitOptions.RemoveEmptyEntries).Count();
@@ -110,7 +108,6 @@
             totaltotal += problemTotal;
         }
 
-        Console.WriteLine(totaltotal);
-        Console.ReadLine();
+        Console.WriteLine($"Part 2: {totaltotal}");
     }
 }    
