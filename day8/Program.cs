@@ -23,6 +23,11 @@ public class Program
         }
 
         var circuits = new List<Circuit>();
+        foreach (var coord in coordinates)
+        {
+            circuits.Add(new Circuit() { Elements = new List<Coordinate>() { coord } });
+        }
+
         var distanceConnections = new SortedList<double, (Coordinate, Coordinate)>();
         for (int i = 0; i < coordinates.Length - 1; i++)
         {
@@ -69,14 +74,14 @@ public class Program
             totalInCircuit += circuit.Elements.Count;
         }
 
-        Console.WriteLine($"Total Circuits: {circuits.Count + (coordinates.Length - totalInCircuit)}");
+        Console.WriteLine($"Total Circuits: {circuits.Count}");
         var ordered = circuits.OrderByDescending(c => c.Elements.Count).ToArray();
         Console.WriteLine($"{ordered[0].Elements.Count} x {ordered[1].Elements.Count} x {ordered[2].Elements.Count} = {ordered[0].Elements.Count * ordered[1].Elements.Count * ordered[2].Elements.Count}");
     }
 
     public static void Part2()
     {
-        var filename = "C:\\projects\\aoc25\\day8\\ex.txt";
+        var filename = "C:\\projects\\aoc25\\day8\\in.txt";
         var lines = File.ReadAllLines(filename);
         var coordinates = new Coordinate[lines.Length];
         for (int i = 0; i < lines.Length; i++)
@@ -86,6 +91,11 @@ public class Program
         }
 
         var circuits = new List<Circuit>();
+        foreach (var coord in coordinates)
+        {
+            circuits.Add(new Circuit() { Elements = new List<Coordinate>() { coord } });
+        }
+
         var distanceConnections = new SortedList<double, (Coordinate, Coordinate)>();
         for (int i = 0; i < coordinates.Length - 1; i++)
         {
@@ -96,7 +106,7 @@ public class Program
             }
         }
 
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < distanceConnections.Count; i++)
         {
             var box1 = distanceConnections.GetValueAtIndex(i).Item1;
             var box2 = distanceConnections.GetValueAtIndex(i).Item2;
@@ -124,17 +134,15 @@ public class Program
             {
                 circuits.Add(new Circuit() { Elements = new List<Coordinate>() { box1, box2 } });
             }
-        }
 
-        var totalInCircuit = 0;
-        foreach (var circuit in circuits)
-        {
-            totalInCircuit += circuit.Elements.Count;
+            if (circuits.Count == 1)
+            {
+                box1.Print();
+                box2.Print();
+                Console.WriteLine($"Part 2: {box1.X * box2.X}");
+                break;
+            }
         }
-
-        Console.WriteLine($"Total Circuits: {circuits.Count + (coordinates.Length - totalInCircuit)}");
-        var ordered = circuits.OrderByDescending(c => c.Elements.Count).ToArray();
-        Console.WriteLine($"{ordered[0].Elements.Count} x {ordered[1].Elements.Count} x {ordered[2].Elements.Count} = {ordered[0].Elements.Count * ordered[1].Elements.Count * ordered[2].Elements.Count}");
     }
 }
 
